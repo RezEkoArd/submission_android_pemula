@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -8,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.vsga.submissionandroidpemula"
+        applicationId =  "com.vsga.submissionandroidpemula"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
@@ -26,6 +27,11 @@ android {
             )
         }
     }
+
+//    buildFeatures {
+//        viewBinding = true
+//    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
