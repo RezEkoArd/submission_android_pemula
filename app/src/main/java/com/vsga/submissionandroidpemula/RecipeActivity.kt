@@ -1,20 +1,29 @@
 package com.vsga.submissionandroidpemula
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class RecipeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_recipe)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val getData = intent.getParcelableExtra<Menu>("android")
+        if(getData != null) {
+            val detailTitle : TextView = findViewById(R.id.detailTitle)
+            val detailImage : ImageView = findViewById(R.id.detailImage)
+            val detailDuration : TextView = findViewById(R.id.detailTime)
+            val detailIngredients : TextView = findViewById(R.id.detailIngredients)
+            val detailsSteps : TextView = findViewById(R.id.detailDesc)
+
+            detailTitle.text = getData.name
+            detailImage.setImageResource(getData.photo)
+            detailDuration.text = getData.duration
+            detailIngredients.text = getData.dataIngredients
+            detailsSteps.text = getData.dataSteps
+
         }
     }
 }

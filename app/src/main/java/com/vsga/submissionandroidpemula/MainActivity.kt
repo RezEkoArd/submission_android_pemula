@@ -1,5 +1,6 @@
 package com.vsga.submissionandroidpemula
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -13,6 +14,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageList: Array<Int>
     private lateinit var titleList: Array<String>
     private lateinit var durationList: Array<String>
+
+//    Variable to detail Activity
+    private lateinit var ingredientList:Array<String>
+    private lateinit var stepsList:Array<String>
+    private lateinit var myAdapter: ListMenuAdapter
 
 
 
@@ -51,7 +57,26 @@ class MainActivity : AppCompatActivity() {
             "60 Minutes",
             "45 Minutes",
             "30 Minutes",
+        )
 
+        ingredientList = arrayOf(
+            getString(R.string.pastaIngredients),
+            getString(R.string.maggiIngredients),
+            getString(R.string.cakeIngredients),
+            getString(R.string.pancakeIngredients),
+            getString(R.string.pizzaIngredients),
+            getString(R.string.burgerIngredients),
+            getString(R.string.friesIngredients),
+        )
+
+        stepsList = arrayOf(
+            getString(R.string.pastaDesc),
+            getString(R.string.maggieDesc),
+            getString(R.string.cakeDesc),
+            getString(R.string.pancakeDesc),
+            getString(R.string.pizzaDesc),
+            getString(R.string.burgerDesc),
+            getString(R.string.friesDesc),
         )
 
         rvRecipes = findViewById(R.id.rv_recipes)
@@ -63,18 +88,26 @@ class MainActivity : AppCompatActivity() {
         datalist = arrayListOf()
         getData()
 
-        rvRecipes.adapter = ListMenuAdapter(datalist)
+        // initialization and set adapter
+        myAdapter = ListMenuAdapter(datalist)
+        rvRecipes.adapter = myAdapter
+
+
+        myAdapter.onItemClick = {
+            val intent = Intent(this, RecipeActivity::class.java)
+            intent.putExtra("android", it)
+            startActivity(intent)
+        }
     }
 
 
     private fun getData(){
 
         for (i in imageList.indices){
-            val menuList = Menu(imageList[i], titleList[i], durationList[i])
+            val menuList = Menu(imageList[i], titleList[i], durationList[i], ingredientList[i], stepsList[i])
             datalist.add(menuList)
         }
 
-        rvRecipes.adapter = ListMenuAdapter(datalist)
     }
 
 //    private fun getListMenu(): ArrayList<Menu> {

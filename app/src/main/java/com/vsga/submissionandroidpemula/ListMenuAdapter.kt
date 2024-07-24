@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ListMenuAdapter(private val listMenu: ArrayList<Menu>) : RecyclerView.Adapter<ListMenuAdapter.ViewHolderClass>(){
 
+    var onItemClick: ((Menu) -> Unit)? = null
+
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -22,6 +25,10 @@ class ListMenuAdapter(private val listMenu: ArrayList<Menu>) : RecyclerView.Adap
         holder.rvImageView.setImageResource(currentItem.photo)
         holder.rvTitle.text = currentItem.name
         holder.rvDuration.text = currentItem.duration
+
+        holder.itemView.setOnClickListener{
+            onItemClick?.invoke(currentItem)
+        }
     }
 
     override fun getItemCount(): Int {
