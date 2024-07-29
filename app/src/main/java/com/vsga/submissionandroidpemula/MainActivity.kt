@@ -2,6 +2,8 @@ package com.vsga.submissionandroidpemula
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -106,6 +108,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: android.view.Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem)  : Boolean {
+        return when (item.itemId)  {
+            R.id.action_profile -> {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
+
+    }
 
     private fun getData(){
 
@@ -116,27 +136,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    private fun getListMenu(): ArrayList<Menu> {
-//        val dataName = resources.getStringArray(R.array.menu_name)
-//        val dataDuration = resources.getStringArray(R.array.menu_duration)
-//        val dataPhoto  = resources.obtainTypedArray(R.array.photo)
-//        val listMenu = ArrayList<Menu>()
-//        for (i in dataName.indices) {
-//            val menu = Menu(dataName[i], dataDuration[i],dataPhoto.getResourceId(i, -1))
-//            listMenu.add(menu)
-//        }
-//        return listMenu
-//    }
 
-//    private fun showRecyclerList(){
-//        rvRecipes.layoutManager = LinearLayoutManager(this)
-//        val listMenuAdapter = ListMenuAdapter(list)
-//        rvRecipes.adapter = listMenuAdapter
-//
-//        listMenuAdapter.setOnItemClickCallback(object : ListMenuAdapter.OnItemClickCallback {
-//            override fun onItemClicked(data: Menu) {
-//                showSelectedMenu(data)
-//            }
-//        })
-//    }
 }

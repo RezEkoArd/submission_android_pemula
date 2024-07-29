@@ -1,11 +1,16 @@
 <resources>
     <!--    <string name="app_name">SubmissionAndroidPemula</string>-->
     <string name="app_name">Recipe Book</string>
+    <string name="profile">profile</string>
     <string name="detail_title">Recipe Book</string>
     <string name="detail_duration">Duration: </string>
     <string name="detail_ingredients">Ingredients:</string>
     <string name="detail_steps">Steps: </string>
     <string name="duration_details">2 Minutes</string>
+    <string name="name_profile">Rezky Eko Ardianto</string>
+    <string name="email_profile">rezekoard@gmail.com</string>
+    <string name="action_back">back</string>
+
 
 
     <string-array name="menu_duration">
