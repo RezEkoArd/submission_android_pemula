@@ -15,17 +15,20 @@
 
         <activity
             android:name=".ProfileActivity"
-            android:exported="false" />
-        <!-- <activity -->
-        <!-- android:name=".RecipeActivity" -->
-        <!-- android:theme="@style/Theme.App.SplashScreen" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+           />
+
         <activity
             android:name=".RecipeActivity"
-            android:theme="@style/Theme.SubmissionAndroidPemula" />
+            android:label="@string/detail_title"
+            android:parentActivityName=".MainActivity"
+           />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/detail_title"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
