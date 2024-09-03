@@ -12,7 +12,6 @@
     <string name="action_back">back</string>
 
 
-
     <string-array name="menu_duration">
         <item>30 Minutes</item>
         <item>2 Minutes</item>
